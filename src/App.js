@@ -7,6 +7,7 @@ import * as actionType from './Component/store/Action';
 
 import Header from './Component/Header';
 import { connect } from 'react-redux';
+import { increment } from "./Component/store/Action";
 
 
 
@@ -59,7 +60,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
                 return {
-                    incCounter: () => dispatch({type: actionType.INCREMENT , value: 1}),
+                    // incCounter: () => dispatch({type: actionType.INCREMENT , value: 1}),
+                    incCounter: () => dispatch(increment(1)),
                     decCounter: () => dispatch({type: actionType.DECREMENT , value: 1}),
                     storeResult: (counterId, value) => dispatch({type: actionType.STORERESULT , cId: counterId , value: value}),
                     delResult: (delId) => dispatch({type: actionType.DELETERESULT , id: delId})
