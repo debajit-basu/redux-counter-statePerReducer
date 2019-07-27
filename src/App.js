@@ -3,11 +3,13 @@ import { Badge } from 'reactstrap';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import * as actionType from './Component/store/Action';
 
 import Header from './Component/Header';
 import { connect } from 'react-redux';
-import { increment } from "./Component/store/Action";
+// import { increment , decrement } from "./Component/store/Action";
+import * as actionCreators from "./Component/store/Action/actionType";
+import * as counterAction from "./Component/store/Action/counterAction";
+import * as resultAction from "./Component/store/Action/resultAction";
 
 
 
@@ -61,10 +63,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
                 return {
                     // incCounter: () => dispatch({type: actionType.INCREMENT , value: 1}),
-                    incCounter: () => dispatch(increment(1)),
-                    decCounter: () => dispatch({type: actionType.DECREMENT , value: 1}),
-                    storeResult: (counterId, value) => dispatch({type: actionType.STORERESULT , cId: counterId , value: value}),
-                    delResult: (delId) => dispatch({type: actionType.DELETERESULT , id: delId})
+                    incCounter: () => dispatch(counterAction.increment(1)),
+                    decCounter: () => dispatch(counterAction.decrement(1)),
+                    storeResult: (counterId, value) => dispatch(resultAction.storeResult(counterId,value)),
+                    delResult: (delId) => dispatch({type: actionCreators.DELETERESULT , id: delId})
                 }
 }
 

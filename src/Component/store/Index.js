@@ -1,6 +1,6 @@
 import { createStore,combineReducers,applyMiddleware,compose } from "redux";
 
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 import CounterReducer from "./reducer/CounterReducer";
 import ResultReducer from "./reducer/ResultReducer";
@@ -29,10 +29,10 @@ const logger = store => {
 }
 
 
-// const middleWare = [thunk];
+const middleWare = [thunk , logger];
 // applyMiddleware is enhancer..........
 
-const store = createStore(AllReducers , compose(applyMiddleware(logger) , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(AllReducers , compose(applyMiddleware(...middleWare) , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 
 
